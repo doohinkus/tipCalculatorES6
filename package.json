@@ -1,0 +1,24 @@
+{
+  "name": "VanillaJSTipCaclulator",
+  "version": "1.0.0",
+  "description": "Tip calculator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ES6", "JS", "Tip Calculator"],
+  "author": "R. Perez",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-pug": "^3.3.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "postcss": "^6.0.14",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-pxtorem": "^4.0.1"
+  }
+}

@@ -1,0 +1,33 @@
+extends layout.pug
+block content
+  #container
+    form.form
+      h1 Tip Calculator
+      label Bill Amount
+        input(type="text" class="billAmount" placeholder="enter amount")
+      label Tip Amount %
+        input(type="text" class="tipRate" placeholder="enter amount")
+      button.calc Calculate
+  #myModal.modal
+    .modal-content
+      span.close x
+
+      .error
+        h2.warn Hey, ya knucklehead:
+        p Please enter numbers greater than zero&mdash;not letters, empty spaces or other characters.
+      .output
+        div(class="amounts")
+          div
+            h4 Bill Amount
+            .billOutput
+          div
+            h4 Tip Percentage
+            .tipPercent
+          div
+            h4 Tip Amount
+            .tipOutput
+          div
+            h2 Total
+            .totalOutput
+        div(class="image")
+         img(src="https://static.wixstatic.com/media/375882_838949ccd8d747edbd0cf182d290755c~mv2.png/v1/fill/w_585,h_782,al_c,usm_0.66_1.00_0.01/375882_838949ccd8d747edbd0cf182d290755c~mv2.png" class="small")
