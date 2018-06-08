@@ -7,6 +7,7 @@ const pug = require('gulp-pug');
 const babel = require('gulp-babel');
 const sourcemaps = require("gulp-sourcemaps");
 const concat = require("gulp-concat");
+const browserify = require('gulp-browserify');
 
 
 gulp.task('css', ()=>{
@@ -50,6 +51,16 @@ gulp.task("babel-transpile", function () {
     .pipe(sourcemaps.write("."))
     .pipe(gulp.dest("dist/js/"));
 });
+//browserify
+gulp.task('scripts', function() {
+    // Single entry point to browserify
+    gulp.src('./src/js/app.js')
+        .pipe(browserify({
+          insertGlobals : true,
+          debug : !gulp.env.production
+        }))
+        .pipe(gulp.dest('dist/js'))
+});
 
 // added
 
@@ -57,5 +68,6 @@ gulp.task("default", ()=>{
   gulp.watch('./src/css/*.css', ["css"])
   gulp.watch('./src/img/*', ["img"])
   gulp.watch('./src/*.pug', ["pug"])
+  gulp.watch('./src/js/*.js', ["scripts"])
   gulp.watch('./src/js/*.js', ["babel"])
 });

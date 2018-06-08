@@ -1,16 +1,6 @@
 //Calculation functions - business logic
-function multiply(amount, tipAmount){
-  return amount * tipAmount;
-}
-function add(firstAmount, secondAmount){
-  return firstAmount + secondAmount;
-}
-function divide(firstAmount,secondAmount){
-  return firstAmount / secondAmount;
-}
-function formatDecimals(amount){
-  return amount.toFixed(2);
-}
+const functions = require('./functions.js');
+
 //DOM manipulation--Simulate JQuery syntax
 const $ = (c) => {
   return document.querySelector(c);
@@ -51,15 +41,15 @@ $('.form').addEventListener('submit', (e) => {
 
    //grab values from form
    const bill = parseFloat($('.billAmount').value);
-   const tip = divide(parseFloat($('.tipRate').value), 100);
-   const tipAmount = multiply(bill,tip);
-   const total = add(bill, tipAmount);
+   const tip = functions.divide(parseFloat($('.tipRate').value), 100);
+   const tipAmount = functions.multiply(bill,tip);
+   const total = functions.add(bill, tipAmount);
 
   //output calculations
-   $('.billOutput').textContent  = `$${formatDecimals(bill)}`;
-   $('.tipOutput').textContent   = `$${formatDecimals(tipAmount)}`;
-   $('.totalOutput').textContent = `$${formatDecimals(total)}`;
-   $('.tipPercent').textContent  = `${formatDecimals(tip)}%`;
+   $('.billOutput').textContent  = `$${functions.formatDecimals(bill)}`;
+   $('.tipOutput').textContent   = `$${functions.formatDecimals(tipAmount)}`;
+   $('.totalOutput').textContent = `$${functions.formatDecimals(total)}`;
+   $('.tipPercent').textContent  = `${functions.formatDecimals(tip)}%`;
 
    //show answer and handle erroroneous input
    showAnswer();
