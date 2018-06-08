@@ -1,4 +1,4 @@
-//Calculation functions - business logic
+//import calculation functions - business logic
 const functions = require('./functions.js');
 
 //DOM manipulation--Simulate JQuery syntax
