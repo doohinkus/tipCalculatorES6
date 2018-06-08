@@ -83,12 +83,10 @@ h1{
   color:  #25D366;
 }
 h2{
-  text-align: left;
   margin: 0;
 }
 h4{
   color: #333;
-  text-align: left;
   margin: 0;
 }
 .output{
@@ -120,6 +118,7 @@ h4{
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    text-align: center;
   }
   .output .amounts {
     width: 50%;
@@ -127,10 +126,6 @@ h4{
   .output .image{
     width: 50%;
   }
-}
-.output div.amounts{
-  /*margin: auto;
-  width: 70%;*/
 }
 .output div.amounts div{
   color: #F94877;

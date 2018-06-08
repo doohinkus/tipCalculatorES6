@@ -1,6 +1,21 @@
+//Calculation functions - business logic
+function multiply(amount, tipAmount){
+  return amount * tipAmount;
+}
+function add(firstAmount, secondAmount){
+  return firstAmount + secondAmount;
+}
+function divide(firstAmount,secondAmount){
+  return firstAmount / secondAmount;
+}
+function formatDecimals(amount){
+  return amount.toFixed(2);
+}
+//DOM manipulation--Simulate JQuery syntax
 const $ = (c) => {
   return document.querySelector(c);
 }
+//Modal
 const displayModal = () => {
  $('#myModal').style.display = "block";
  $('.modal .modal-content').classList.add('slide');
@@ -15,45 +30,6 @@ const warn = () => {
  $('#myModal').classList.remove('slide');
  displayModal();
 }
-const showAnswer = () => {
- $('.error').style.display = "none";
- $('.output').style.display    = '';
- displayModal();
-}
-const calculate = () => {
-     let tip             = 0;
-     let total           = 0;
-     let billAmount      = $('.billAmount').value;
-     let tipRate         = $('.tipRate').value;
-
-     billAmount          = parseFloat(billAmount);
-     tipRate             = parseFloat(tipRate)/100;
-
-     tip                 = tipRate * billAmount;
-     total               = tip + billAmount;
-
-     return {
-       tip                 : tip.toFixed(2),
-       billAmount          : billAmount.toFixed(2),
-       total               : total.toFixed(2),
-       tipRate             : tipRate.toFixed(2)
-     }
-}
-
-
-$('.form').addEventListener('submit', (e) => {
-   e.preventDefault();
-   const answer = calculate();
-
-   $('.billOutput').textContent  = `$${answer.billAmount}`;
-   $('.tipOutput').textContent   = `$${answer.tip}`;
-   $('.totalOutput').textContent = `$${answer.total}`;
-   $('.tipPercent').textContent  = `${answer.tipRate * 100}%`
-   showAnswer();
-   (answer.billAmount>0 && answer.tipRate >0) || warn();
-});
-
-$('.billAmount').focus();
 
 $('.close').addEventListener('click', (e) => {
    hideModal();
@@ -61,4 +37,31 @@ $('.close').addEventListener('click', (e) => {
 
 $('#myModal').addEventListener('click', (e) => {
    hideModal();
+});
+
+const showAnswer = () => {
+ $('.error').style.display = "none";
+ $('.output').style.display    = '';
+ displayModal();
+}
+
+//Main interface - handle user input
+$('.form').addEventListener('submit', (e) => {
+   e.preventDefault();
+
+   //grab values from form
+   const bill = parseFloat($('.billAmount').value);
+   const tip = divide(parseFloat($('.tipRate').value), 100);
+   const tipAmount = multiply(bill,tip);
+   const total = add(bill, tipAmount);
+
+  //output calculations
+   $('.billOutput').textContent  = `$${formatDecimals(bill)}`;
+   $('.tipOutput').textContent   = `$${formatDecimals(tipAmount)}`;
+   $('.totalOutput').textContent = `$${formatDecimals(total)}`;
+   $('.tipPercent').textContent  = `${formatDecimals(tip)}%`;
+
+   //show answer and handle erroroneous input
+   showAnswer();
+   (bill > 0 && tip > 0) || warn();
 });

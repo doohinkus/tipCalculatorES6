@@ -1,8 +1,23 @@
 'use strict';
 
+//Calculation functions - business logic
+function multiply(amount, tipAmount) {
+  return amount * tipAmount;
+}
+function add(firstAmount, secondAmount) {
+  return firstAmount + secondAmount;
+}
+function divide(firstAmount, secondAmount) {
+  return firstAmount / secondAmount;
+}
+function formatDecimals(amount) {
+  return amount.toFixed(2);
+}
+//DOM manipulation--Simulate JQuery syntax
 var $ = function $(c) {
   return document.querySelector(c);
 };
+//Modal
 var displayModal = function displayModal() {
   $('#myModal').style.display = "block";
   $('.modal .modal-content').classList.add('slide');
@@ -17,44 +32,6 @@ var warn = function warn() {
   $('#myModal').classList.remove('slide');
   displayModal();
 };
-var showAnswer = function showAnswer() {
-  $('.error').style.display = "none";
-  $('.output').style.display = '';
-  displayModal();
-};
-var calculate = function calculate() {
-  var tip = 0;
-  var total = 0;
-  var billAmount = $('.billAmount').value;
-  var tipRate = $('.tipRate').value;
-
-  billAmount = parseFloat(billAmount);
-  tipRate = parseFloat(tipRate) / 100;
-
-  tip = tipRate * billAmount;
-  total = tip + billAmount;
-
-  return {
-    tip: tip.toFixed(2),
-    billAmount: billAmount.toFixed(2),
-    total: total.toFixed(2),
-    tipRate: tipRate.toFixed(2)
-  };
-};
-
-$('.form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var answer = calculate();
-
-  $('.billOutput').textContent = '$' + answer.billAmount;
-  $('.tipOutput').textContent = '$' + answer.tip;
-  $('.totalOutput').textContent = '$' + answer.total;
-  $('.tipPercent').textContent = answer.tipRate * 100 + '%';
-  showAnswer();
-  answer.billAmount > 0 && answer.tipRate > 0 || warn();
-});
-
-$('.billAmount').focus();
 
 $('.close').addEventListener('click', function (e) {
   hideModal();
@@ -62,4 +39,31 @@ $('.close').addEventListener('click', function (e) {
 
 $('#myModal').addEventListener('click', function (e) {
   hideModal();
+});
+
+var showAnswer = function showAnswer() {
+  $('.error').style.display = "none";
+  $('.output').style.display = '';
+  displayModal();
+};
+
+//Main interface - handle user input
+$('.form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  //grab values from form
+  var bill = parseFloat($('.billAmount').value);
+  var tip = divide(parseFloat($('.tipRate').value), 100);
+  var tipAmount = multiply(bill, tip);
+  var total = add(bill, tipAmount);
+
+  //output calculations
+  $('.billOutput').textContent = '$' + formatDecimals(bill);
+  $('.tipOutput').textContent = '$' + formatDecimals(tipAmount);
+  $('.totalOutput').textContent = '$' + formatDecimals(total);
+  $('.tipPercent').textContent = formatDecimals(tip) + '%';
+
+  //show answer and handle erroroneous input
+  showAnswer();
+  bill > 0 && tip > 0 || warn();
 });
