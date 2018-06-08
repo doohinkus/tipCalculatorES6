@@ -25,7 +25,7 @@ input[type=text], select {
     font-size: 1.1rem;
 }
 button {
-   width: 50%;
+   width: 100%;
    padding: 12px 20px;
    display: block;
    margin: 8px auto;
@@ -34,13 +34,12 @@ button {
    background-color:  #1DA1F2;
    border: none;
    font-size: 1.1rem;
-   font-family: 'Paytone One', sans-serif;
+   font-family: inherit;
    color: #fff;
    transition: all .5s ease-in-out;
 }
 button:hover{
   cursor: pointer;
-
   background-color: #34A853;
 }
 
@@ -59,20 +58,14 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-.form, .output {
-    width: 45%;
+.form{
+    width: 70%;
     border-radius: 5px;
     padding: 20px;
     background-color: #f9f9f2;
 }
 .form{
  box-shadow: 0 0 2rem rgba(0,0,0,0.3);
-}
-.output {
-  display: none;
-  margin: auto;
-  width: 80%;
-  background-color: transparent;
 }
 h1{
   text-align: center;
@@ -88,22 +81,35 @@ h4{
   margin: 0;
 }
 .output{
+  display: none;
+  margin: auto;
+  background-color: transparent;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-
-  align-items: stretch;
+  align-items: center;
+  text-align: center;
+}
+@media only screen and (min-width: 550px) {
+  .output{
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+  }
+  .output .amounts {
+    width: 50%;
+  }
+  .output .image{
+    width: 50%;
+  }
 }
 .output div.amounts{
-/*   width: 70%; */
-  margin: auto;
-
-  width: 60%;
+  /*margin: auto;
+  width: 70%;*/
 }
 .output div.amounts div{
   color: #F94877;
   font-size: 1rem;
-/*   display: flex; */
 }
 .totalOutput{
   color:  #25D366 !important;
@@ -135,6 +141,8 @@ h4{
   top: 0;
   overflow: hidden;
 }
+
+
 .slide{
   animation: slideIn .3s ease-in-out;
 }
