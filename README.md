@@ -7,7 +7,7 @@
 ## Description
 
 _A web application that takes a bill amount and tip amount and then calculates the total, showing the breakdown.
-[View live Tip Calculator project on Surge](http://busy-jellyfish.surge.sh/)_
+[View live Tip Calculator project on Surge](https://wild-fork.surge.sh)_
 
 
 ## Setup/Installation Requirements (Requires NodeJS)
