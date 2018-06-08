@@ -49,7 +49,7 @@ $('.form').addEventListener('submit', (e) => {
    $('.billOutput').textContent  = `$${functions.formatDecimals(bill)}`;
    $('.tipOutput').textContent   = `$${functions.formatDecimals(tipAmount)}`;
    $('.totalOutput').textContent = `$${functions.formatDecimals(total)}`;
-   $('.tipPercent').textContent  = `${functions.formatDecimals(tip)}%`;
+   $('.tipPercent').textContent  = `${functions.formatDecimals(tip) * 100}%`;
 
    //show answer and handle erroroneous input
    showAnswer();
