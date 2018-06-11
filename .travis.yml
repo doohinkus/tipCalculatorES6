@@ -1,0 +1,11 @@
+language: node_js
+  - "9"
+  - "8"
+  - "7"
+  - "6"
+  - "5"
+before-script:
+  -"npm install"
+  -"gulp"
+script:
+  -"npm run test"
