@@ -71,8 +71,3 @@ gulp.task("default", ()=>{
   gulp.watch('./src/js/*.js', ["scripts"])
   gulp.watch('./src/js/*.js', ["babel"])
 });
-
-//travis
-gulp.task("travis", ['pug','css','babel', 'babel-transpile', 'scripts', 'img'], function(){
-  process.exit(0);
-});
