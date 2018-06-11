@@ -73,4 +73,6 @@ gulp.task("default", ()=>{
 });
 
 //travis
-gulp.task("travis", ['pug','css','babel', 'babel-transpile', 'scripts', 'img'])
+gulp.task("travis", ['pug','css','babel', 'babel-transpile', 'scripts', 'img'], function(){
+  process.exit(0);
+});
