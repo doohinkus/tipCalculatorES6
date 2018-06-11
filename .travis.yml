@@ -4,7 +4,7 @@ language: node_js
   - "7"
   - "6"
   - "5"
-before-script:
+before_script:
   -"npm install"
   -"gulp"
 script:
