@@ -1,5 +1,5 @@
 # _ES6 Tip Calculator Vanilla JS_
-
+[![Build Status](https://travis-ci.org/doohinkus/tipCalculatorES6.svg?branch=master)](https://travis-ci.org/doohinkus/tipCalculatorES6)
 #### _Simple Tip Calculator app made with Vanilla JS/ES6 (transpiled with Babel). This responsive web app comes from a code challenge in **Exercises in Programming** by Brain Hogan._
 
 #### By _**Rafael Perez**_
